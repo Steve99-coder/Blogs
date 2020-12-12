@@ -50,3 +50,17 @@ def profile():
         form.bio.data = current_user.bio
     profile_pic_path = url_for('static',filename = 'photos/'+ current_user.profile_pic_path) 
     return render_template('profile/profile.html', profile_pic_path=profile_pic_path, form = form)
+
+@main.route('/user/<name>/updateprofile', methods = ['POST','GET'])
+@login_required
+def updateprofile(name):
+    form = UpdateProfile()
+    user = User.query.filter_by(username = name).first()
+    if user == None:
+        abort(404)
+    if form.validate_on_submit():
+        user.bio = form.bio.data
+        user.save()
+        return redirect(url_for('.profile',name = name))
+    return render_template('profile/updateprofile.html',form =form)
+
