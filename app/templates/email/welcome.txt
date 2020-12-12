@@ -1,0 +1,2 @@
+Hello {{user.username}}, Welcome to Blogers region.
+We hope you find this place your second home for innovation and explore your talents.

@@ -1,0 +1,10 @@
+Dear subscriber!
+
+Sign in and check out this new Post and comment
+
+Title: {{blog.title}}
+Post: {{blog.content|truncate(30)}}
+
+
+Yours sincerely,
+Best Blog Creators.
