@@ -15,7 +15,7 @@ def index():
     quotes = get_quotes()
     page = request.args.get('page',1, type = int )
     blogs = Blog.query.order_by(Blog.posted.desc()).paginate(page = page, per_page = 3)
-    title = 'Welcome to blog app'
+    title = 'This is your blog web app'
     
     return render_template('index.html', title = title,blogs=blogs,quote=quotes)
 
@@ -119,8 +119,8 @@ def subscribe():
     email = request.form.get('subscriber')
     new_subscriber = Subscriber(email = email)
     new_subscriber.save_subscriber()
-    mail_message("Subscribed to S-Blogs","email/welcome_subscriber",new_subscriber.email,new_subscriber=new_subscriber)
-    flash('Successful')
+    mail_message("Subscribed successfully to Steve's blogs","email/welcome_subscriber",new_subscriber.email,new_subscriber=new_subscriber)
+    flash('Subscribed successfully to Steve\'s blogs')
     return redirect(url_for('main.index'))
 
 
